@@ -1,5 +1,5 @@
 <template>
-    <div class="header-box">      
+    <div class="header-box">     
       <el-dropdown>
         <el-avatar icon="el-icon-user-solid" size="small"></el-avatar>
         <el-dropdown-menu slot="dropdown" size="medium">
@@ -27,6 +27,5 @@ export default {
     margin:0 20px;
 }
 
-$color:red;
 div {color:$color;}
 </style>
