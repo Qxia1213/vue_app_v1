@@ -14,7 +14,7 @@ export default {
     name:'Header'
 }
 </script>
-<style>
+<style lang="scss">
 .header-box{
     display: flex;
     vertical-align: inherit;
@@ -26,4 +26,7 @@ export default {
 .el-dropdown{
     margin:0 20px;
 }
+
+$color:red;
+div {color:$color;}
 </style>
