@@ -1,43 +1,42 @@
 <template>  
-
-
-<!-- <el-container style="height: 100%; border: 1px solid #eee">
-    
-    <el-header>header</el-header>
-    <el-main>main</el-main>
-    <el-footer>footer</el-footer>
-  <el-container>
-      <Header />
-    <router-view/>
+  <el-container class="container">
+    <el-aside class="aside" :width="asideWidth"><Sider /></el-aside>
+    <el-container class="right-side">
+      <el-header class="header"><Header /></el-header>
+      <el-main class="main"><router-view/></el-main>
+    </el-container>
   </el-container>
-</el-container> -->
-
-
-<el-container class="container">
-  <el-aside class="aside"><Sider /></el-aside>
-  <el-container class="right-side">
-    <el-header class="header"><Header /></el-header>
-    <el-main class="main"><router-view/></el-main>
-  </el-container>
-</el-container>
-
-
 </template>
 <script>
 import Sider from '@/components/Sider'
 import Header from '@/components/Header'
+import {mapState, mapMutations} from 'vuex'
   export default {
-      components:{Sider,Header},
+    components:{Sider,Header},
     data() {
       const item = {
-        date: '2016-05-02',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄'
+        date: '2020-04-01',
+        name: '谢小千',
+        address: '中山中山中山中山中山'
       };
       return {
-        tableData: Array(20).fill(item)
+        tableData: Array(20).fill(item),
+        screenWidth: document.body.clientWidth
       }
-    }
+    },
+    computed:mapState(["asideWidth"]),
+    methods:mapMutations(['changeCollapse','changeWidth']),
+    mounted() {  
+      window.onresize=()=>{
+        let screenWidth=document.body.clientWidth;
+        if(screenWidth<1028){
+          this.changeCollapse(true);
+          this.changeWidth();
+        }else{
+          console.log(screenWidth)
+        }
+      }
+    },
   };
 </script>
 <style>
@@ -46,10 +45,9 @@ import Header from '@/components/Header'
     position: relative;
 }
 .aside{
-    height: calc(100% - 60px);
-    width:260px;
-    margin-top: 60px;
     background: #001529;
+    position: relative;
+    overflow: hidden;
 }
 .right-side{
     height:100%;

@@ -1,19 +1,15 @@
 <template>
-<div>
+<div class="aside-box">
     <Logo />
-<el-radio-group v-model="isCollapse" style="margin-bottom: 20px;">
-  <el-radio-button :label="true" v-show="!isCollapse"><i :class="[isCollapse?'el-icon-s-fold':'el-icon-s-unfold']"/></el-radio-button>
-  <el-radio-button :label="false" v-show="isCollapse"><i :class="[isCollapse?'el-icon-s-fold':'el-icon-s-unfold']"/></el-radio-button>
-</el-radio-group>
 <el-menu default-active="1-4-1" 
-class="el-menu-vertical-demo" 
+class="el-menu-noborder" 
 @open="handleOpen" 
 @close="handleClose" 
 :collapse="isCollapse"
 background-color="#001529"
 border-color="red"
 text-color="#fff"
-active-text-color="#ffd04b" 
+active-text-color="#ffd04b"
 >
   <el-submenu index="1">
     <template slot="title">
@@ -50,14 +46,11 @@ active-text-color="#ffd04b"
 </template>
 <script>
 import Logo from '@/components/Logo.vue'
+import {mapState} from 'vuex'
   export default {
     components:{Logo},
     name:'Sider',
-    data() {
-      return {
-        isCollapse: false
-      };
-    },
+    computed:mapState(["isCollapse"]),
     methods: {
       handleOpen(key, keyPath) {
         console.log(key, keyPath);
@@ -68,7 +61,11 @@ import Logo from '@/components/Logo.vue'
     }
   }
 </script>
-<style>
-.el-menu-vertical-demo{border:none;}
-  
+<style lang="scss">
+.el-menu-noborder{border:none!important;}
+.aside-box{
+  overflow: auto;
+  height:calc(100% - 60px);
+  margin-top:60px
+}
 </style>

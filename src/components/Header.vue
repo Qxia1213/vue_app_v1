@@ -1,5 +1,5 @@
 <template>
-    <div class="header-box">     
+    <div class="header-box">   
       <el-dropdown>
         <el-avatar icon="el-icon-user-solid" size="small"></el-avatar>
         <el-dropdown-menu slot="dropdown" size="medium">
@@ -7,11 +7,33 @@
         </el-dropdown-menu>
       </el-dropdown>
       <i class="el-icon-lock" />
+      <i :class="[isCollapse?'el-icon-s-unfold':'el-icon-s-fold']" @click="handleWidth" class="icon-collapse hidden-sm-and-down"/>      
     </div>
 </template>
 <script>
+import { mapState, mapMutations } from 'vuex'
+import axios from '../axios.js'
 export default {
-    name:'Header'
+    name:'Header',
+    computed:mapState(['isCollapse']),
+    methods:{...mapMutations(['changeCollapse','changeWidth']),
+      handleWidth(){
+          this.changeCollapse();
+          this.changeWidth();
+      }     
+    },
+    mounted() {
+      console.log('axios.fetchGet')
+      axios.fetchGet('/apis/server/sys.role.page').then((data) => {
+            debugger
+              this.base.token = data.data.token　　　　
+              // console.log("this.base.tokenthis.base.token",this.base.token)
+              
+          }).catch(err=>{
+                  console.log(err)
+              }
+          )
+    },
 }
 </script>
 <style lang="scss">
@@ -26,6 +48,11 @@ export default {
 .el-dropdown{
     margin:0 20px;
 }
-
-// div {color:$color;}
+.icon-collapse{
+    flex-grow: 1;
+    padding-left: 10px;
+    font-size: 25px;
+    opacity: .4;
+    border: none;
+}
 </style>

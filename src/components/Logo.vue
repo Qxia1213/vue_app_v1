@@ -10,10 +10,10 @@ export default {
 .logo{
     padding: 10px;
     height: 60px;
-    position: fixed;
+    position: absolute;
     top: 0;
     background: #002140;
-    width: 300px;
+    width: 100%;
     box-sizing: border-box;
     color:white;
     font-size: 18px;
@@ -24,6 +24,6 @@ export default {
 .logo img{
   width: 30px;
   height: 30px;
-  margin:0 20px;
+  margin: 0 20px 0 10px;
 }
 </style>
