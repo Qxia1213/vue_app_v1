@@ -27,5 +27,5 @@ export default {
     margin:0 20px;
 }
 
-div {color:$color;}
+// div {color:$color;}
 </style>
