@@ -2,17 +2,17 @@
   <el-container class="container">
     <el-aside class="aside" :width="asideWidth"><Sider /></el-aside>
     <el-container class="right-side">
-      <el-header class="header"><Header /></el-header>
+      <el-header class="header"><Header><template v-slot:default="slotPro">this is slot{{slotPro.isCollapse}}</template></Header></el-header>
       <el-main class="main"><router-view/></el-main>
     </el-container>
   </el-container>
 </template>
 <script>
-import Sider from '@/components/Sider'
-import Header from '@/components/Header'
+import Sider from './layout/aside'
+
 import {mapState, mapMutations} from 'vuex'
   export default {
-    components:{Sider,Header},
+    components:{Sider,Header:()=>import(/* webpackChunkName: "task" */ './layout/header' )},
     data() {
       const item = {
         date: '2020-04-01',

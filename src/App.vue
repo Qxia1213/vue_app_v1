@@ -1,14 +1,21 @@
 <template>
   <div id="app">
-    <Base/>
+    <router-view></router-view>
   </div>
 </template>
-
 <script>
-import Base from '@/layouts/Base'
+
 export default {
-  components:{Base},
-  name: 'App'
+
+  name: 'App',
+  data:function(){
+    return{
+      isLogin:this.$store.isLogin
+    }
+  },
+  mounted() {
+    console.log(this)
+  },
 }
 </script>
 

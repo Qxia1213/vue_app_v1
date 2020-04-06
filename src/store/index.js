@@ -4,6 +4,7 @@ import Vuex from 'vuex';
 Vue.use(Vuex);
 
 const state={
+    isLogin:true,
     asideWidth:"260px",
     isCollapse:false
 }

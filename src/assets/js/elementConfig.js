@@ -20,9 +20,11 @@ import {
     
     DropdownMenu,
     Table,
-    TableColumn
-    
-
+    TableColumn,
+    Form,
+    FormItem,
+    Input,
+    Link,   
     
   } from 'element-ui'
   
@@ -49,5 +51,9 @@ import {
       V.use(DropdownMenu)
       V.use(Table)
       V.use(TableColumn)
+      V.use(Form)
+      V.use(FormItem)
+      V.use(Input)
+      V.use(Link)
     }
   }
