@@ -1,5 +1,5 @@
 <template>
-    <div class="logo"><img src="../assets/CommercialLogo.png"><span>领丰PMS系统</span></div>
+    <div class="logo"><img src="../assets/logo.png"><span>Elem系统</span></div>
 </template>
 <script>
 export default {
