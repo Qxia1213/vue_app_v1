@@ -10,48 +10,31 @@ background-color="#001529"
 border-color="red"
 text-color="#fff"
 active-text-color="#ffd04b"
-:router="true"
+:router="false"
 >
-  <el-menu-item index="index">
-    <i class="el-icon-s-home"></i>
-    <span slot="title">首页</span>
-  </el-menu-item>
-  <el-submenu index="1">
-    <template slot="title">
-      <i class="el-icon-location"></i>
-      <span slot="title">任务管理</span>
-    </template>
-    <el-menu-item-group>
-      <span slot="title">任务清单</span>
-      <el-menu-item index="hello">选项1</el-menu-item>
-      <el-menu-item index="1-2">选项2</el-menu-item>
-    </el-menu-item-group>
-    <el-menu-item-group title="分组2">
-      <el-menu-item index="1-3">任务进度</el-menu-item>
-    </el-menu-item-group>
-                       
-  </el-submenu>
-  <el-menu-item index="2">
-    <i class="el-icon-menu"></i>
-    <span slot="title">导航二</span>
-  </el-menu-item>
-  <el-menu-item index="3" disabled>
-    <i class="el-icon-document"></i>
-    <span slot="title">导航三</span>
-  </el-menu-item>
-  <el-menu-item index="4">
-    <i class="el-icon-setting"></i>
-    <span slot="title">导航四</span>
-  </el-menu-item>
+<sidebarItem :routes="routeItem" />
 </el-menu>
 </div>
 </template>
 <script>
 import Logo from '@/components/Logo.vue'
+import sidebarItem from '@/components/sidebarItem.vue'
 import {mapState} from 'vuex'
+
+import routeItem from '@/router/modules/task'
+
   export default {
-    components:{Logo},
+    components:{Logo,sidebarItem},
     name:'Aside',
+    data:function(){
+      return{
+        routeItem:[...routeItem]
+      }
+    },
+    mounted() {
+      console.log("routeItem=")
+      console.log(routeItem)
+    },
     computed:mapState(["isCollapse"]),
     methods: {
       handleOpen(key, keyPath) {
